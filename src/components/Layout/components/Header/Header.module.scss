@@ -17,10 +17,12 @@
    height: 100%;
    width: var(--default-layout-width, 1150px);
 }
-
+.search,
+.search-result {
+   width: 361px;
+}
 .search {
    display: flex;
-   width: 361px;
    height: var(--search-height);
    background: rgba(22, 24, 35, 0.06);
    border-radius: var(--search-border-radius);
@@ -51,6 +53,12 @@
    &:focus-within {
       border-color: rgba(22, 24, 35, 0.34);
    }
+}
+.search-title {
+   color: rgba(22, 24, 35, 0.5);
+   font-weight: 6000;
+   font-size: 1.4rem;
+   padding: 5px 12px;
 }
 
 .clear,

@@ -27,6 +27,8 @@ import images from '~/assets/images'
 import { Wrapper as PopperWrapper } from '~/components/Popper'
 import AccountsItem from '~/components/Layout/AccountsItem'
 import Button from '~/components/Button'
+// import { MessageIcon } from '~/components/Icons'
+import Image from '~/components/Image'
 
 const MENU_ITEMS = [
    {
@@ -125,7 +127,10 @@ function Header() {
                )}
             >
                <div className={cx('search')}>
-                  <input placeholder="Search account and video" spellCheck={false} />
+                  <input
+                     placeholder="Search account and video"
+                     spellCheck={false}
+                  />
                   <button className={cx('clear')}>
                      <FontAwesomeIcon icon={faCircleXmark} />
                   </button>
@@ -139,7 +144,11 @@ function Header() {
             <div className={cx('action')}>
                {currenUser ? (
                   <>
-                     <Tippy delay={[0, 100]} content="Upload Video" placement="bottom">
+                     <Tippy
+                        delay={[0, 100]}
+                        content="Upload Video"
+                        placement="bottom"
+                     >
                         <button className={cx('action-btn')}>
                            <FontAwesomeIcon icon={faCloudUpload} />
                         </button>
@@ -148,6 +157,7 @@ function Header() {
                      {/* <Tippy content="Message">
                         <button className={cx('action-btn')}>
                            <FontAwesomeIcon icon={faMessage} />
+                           <MessageIcon/>
                         </button>
                      </Tippy> */}
                   </>
@@ -160,12 +170,16 @@ function Header() {
                            </Button> */}
                   </>
                )}
-               <Menu items={currenUser ? useMenu : MENU_ITEMS} onChange={handleMenuChange}>
+               <Menu
+                  items={currenUser ? useMenu : MENU_ITEMS}
+                  onChange={handleMenuChange}
+               >
                   {currenUser ? (
-                     <img
+                     <Image
                         className={cx('user-avatar')}
                         alt=""
-                        src="https://yt3.ggpht.com/yti/AJo0G0l3RVaTVcBxpJox1hEb3Rgi8gQubLNROnKgYwE9bg=s88-c-k-c0x00ffffff-no-rj-mo"
+                        fallback="https://yt3.ggpht.com/yti/AJo0G0l3RVaTVcBxpJox1hEb3Rgi8gQubLNROnKgYwE9bg=s88-c-k-c0x00ffffff-no-rj-mo"
+                        src="https://www.facebook.com/watch/?v=478336767557901&aggr_v_ids%5B0%5D=478336767557901&notif_id=1665650477065463&notif_t=watch_follower_video_explicit&ref=notif"
                      />
                   ) : (
                      <button className={cx('more-btn')}>

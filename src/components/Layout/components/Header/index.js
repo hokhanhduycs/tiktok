@@ -24,7 +24,7 @@ import images from '~/assets/images'
 import Button from '~/components/Button'
 // import { MessageIcon } from '~/components/Icons'
 import Image from '~/components/Image'
-import Search from '~/components/Search'
+import Search from '~/components/Layout/components/Search'
 
 const MENU_ITEMS = [
    {

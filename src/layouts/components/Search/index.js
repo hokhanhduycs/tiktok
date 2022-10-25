@@ -11,7 +11,7 @@ import HeadlessTippy from '@tippyjs/react/headless'
 // import * as searchServices from '~/services/searchService'
 import request from '~/utils/httpRequest'
 import { Wrapper as PopperWrapper } from '~/components/Popper'
-import AccountsItem from '~/layouts/AccountsItem'
+import AccountsItem from '~/components/AccountsItem'
 import styles from './Search.module.scss'
 import { useDebounce } from '~/hooks'
 

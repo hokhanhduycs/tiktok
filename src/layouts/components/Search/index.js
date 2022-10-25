@@ -8,9 +8,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import HeadlessTippy from '@tippyjs/react/headless'
 
-import request from '~/utils/request'
+// import * as searchServices from '~/services/searchService'
+import request from '~/utils/httpRequest'
 import { Wrapper as PopperWrapper } from '~/components/Popper'
-import AccountsItem from '~/components/Layout/AccountsItem'
+import AccountsItem from '~/layouts/AccountsItem'
 import styles from './Search.module.scss'
 import { useDebounce } from '~/hooks'
 

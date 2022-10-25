@@ -23,8 +23,8 @@ import images from '~/assets/images'
 import Button from '~/components/Button'
 // import { MessageIcon } from '~/components/Icons'
 import Image from '~/components/Image'
-import Search from '~/components/Layout/components/Search'
-import routesConfig from '~/config/routes'
+import Search from '~/layouts/components/Search'
+import config from '~/config'
 
 const MENU_ITEMS = [
    {
@@ -98,7 +98,7 @@ function Header() {
    return (
       <header className={cx('wrapper')}>
          <div className={cx('inner')}>
-            <Link to={routesConfig.home}>
+            <Link to={config.routes.home}>
                <img src={images.logo} alt="tiktok" />
             </Link>
 

@@ -14,17 +14,17 @@ import {
    // faSignIn,
 } from '@fortawesome/free-solid-svg-icons'
 import Tippy from '@tippyjs/react'
-
+import { Link } from 'react-router-dom'
 import 'tippy.js/dist/tippy.css'
 
 import Menu from '~/components/Popper/Menu'
 import styles from './Header.module.scss'
 import images from '~/assets/images'
-
 import Button from '~/components/Button'
 // import { MessageIcon } from '~/components/Icons'
 import Image from '~/components/Image'
 import Search from '~/components/Layout/components/Search'
+import routesConfig from '~/config/routes'
 
 const MENU_ITEMS = [
    {
@@ -98,7 +98,10 @@ function Header() {
    return (
       <header className={cx('wrapper')}>
          <div className={cx('inner')}>
-            <img src={images.logo} alt="tiktok" />
+            <Link to={routesConfig.home}>
+               <img src={images.logo} alt="tiktok" />
+            </Link>
+
             {/* Search */}
             <Search />
             <div className={cx('action')}>
@@ -133,6 +136,7 @@ function Header() {
                <Menu
                   items={currenUser ? useMenu : MENU_ITEMS}
                   onChange={handleMenuChange}
+                  hideOnClick={false}
                >
                   {currenUser ? (
                      <Image

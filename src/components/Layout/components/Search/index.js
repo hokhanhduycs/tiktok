@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import HeadlessTippy from '@tippyjs/react/headless'
 
+import request from '~/utils/request'
 import { Wrapper as PopperWrapper } from '~/components/Popper'
 import AccountsItem from '~/components/Layout/AccountsItem'
 import styles from './Search.module.scss'
@@ -31,14 +32,15 @@ function Search() {
          return
       }
       setLoading(true)
-      fetch(
-         `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-            debounced
-         )}&type=less`
-      )
-         .then((res) => res.json())
+      request
+         .get('users/search', {
+            params: {
+               q: debounced,
+               type: 'less',
+            },
+         })
          .then((res) => {
-            setSearchResult(res.data)
+            setSearchResult(res.data.data)
             setLoading(false)
          })
          .catch(() => {
@@ -53,6 +55,13 @@ function Search() {
    const handleHideResult = () => {
       setShowRusult(false)
    }
+   const handleChange = (e) => {
+      const searchValue = e.target.value
+      if (!searchValue.startsWith(' ')) {
+         setSearchValue(searchValue)
+      }
+   }
+
    return (
       <HeadlessTippy
          visible={showRusult && searchResult.length > 0}
@@ -75,7 +84,7 @@ function Search() {
                value={searchValue}
                placeholder="Search account and video"
                spellCheck={false}
-               onChange={(e) => setSearchValue(e.target.value)}
+               onChange={handleChange}
                onFocus={() => setShowRusult(true)}
             />
             {!!searchValue && !loading && (
@@ -87,7 +96,10 @@ function Search() {
                <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
             )}
 
-            <button className={cx('search-btn')}>
+            <button
+               className={cx('search-btn')}
+               onMouseDown={(e) => e.preventDefault()}
+            >
                <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
          </div>

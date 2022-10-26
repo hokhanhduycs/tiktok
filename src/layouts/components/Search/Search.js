@@ -23,12 +23,12 @@ function Search() {
    const [showRusult, setShowRusult] = useState(true)
    const [loading, setLoading] = useState(false)
 
-   const debounced = useDebounce(searchValue, 500)
+   const debouncedValue = useDebounce(searchValue, 500)
 
    const inputRef = useRef()
 
    useEffect(() => {
-      if (!debounced.trim()) {
+      if (!debouncedValue.trim()) {
          setSearchResult([])
          return
       }
@@ -36,7 +36,7 @@ function Search() {
       request
          .get('users/search', {
             params: {
-               q: debounced,
+               q: debouncedValue,
                type: 'less',
             },
          })
@@ -47,7 +47,7 @@ function Search() {
          .catch(() => {
             setLoading(false)
          })
-   }, [debounced])
+   }, [debouncedValue])
 
    const handleClear = () => {
       setSearchValue('')
